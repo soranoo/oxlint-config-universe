@@ -1,0 +1,83 @@
+name: Publish to NPM
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version bump type'
+        required: true
+        type: choice
+        options:
+          - patch
+          - minor
+          - major
+        default: patch
+      dry_run:
+        description: 'Dry run (no commit, tag, push, or publish)'
+        required: false
+        type: boolean
+        default: false
+
+concurrency:
+  group: publish
+  cancel-in-progress: false
+
+permissions:
+  contents: write # push version commit + tag, create GitHub release
+  id-token: write # npm trusted publishing (OIDC) + provenance
+
+jobs:
+  publish:
+    name: Publish package
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+
+      - name: Setup Yarn
+        run: corepack enable
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+          cache: yarn
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Install dependencies
+        run: yarn install --immutable
+
+      - name: Check formatting
+        run: yarn format:check
+
+      - name: Lint
+        run: yarn lint
+
+      - name: Test
+        run: yarn test
+
+      - name: Configure Git
+        run: |
+          git config --global user.name "Expo CI"
+          git config --global user.email "support+ci@expo.io"
+
+      # On a dry run the version is bumped only in the working tree,
+      # so there is no commit or tag to accidentally push.
+      - name: Bump version and tag
+        run: npm version ${{ inputs.version }} ${{ inputs.dry_run && '--no-git-tag-version' || '' }}
+
+      - name: Push version commit and tag
+        if: ${{ !inputs.dry_run }}
+        run: git push --follow-tags
+
+      # Authenticates via OIDC trusted publishing — no token secret needed.
+      # Provenance is generated automatically.
+      - name: Publish to NPM
+        run: npm publish ${{ inputs.dry_run && '--dry-run' || '' }}
+
+      - name: Create GitHub Release
+        if: ${{ !inputs.dry_run }}
+        run: gh release create "v$(node -p "require('./package.json').version")" --generate-notes
+        env:
+          GH_TOKEN: ${{ github.token }}

@@ -9,12 +9,17 @@ jobs:
   ci:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v7
+      - run: corepack enable
+      - uses: actions/setup-node@v7
         with:
-          node-version-file: package.json
+          node-version-file: .nvmrc
           cache: yarn
-      - run: yarn install --frozen-lockfile
+      - run: yarn install --immutable
       - run: yarn format:check
       - run: yarn lint
       - run: yarn test
+      - name: Check that declaration files are up to date
+        run: |
+          yarn build:types
+          git diff --exit-code -- '*.d.ts'

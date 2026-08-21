@@ -9,7 +9,8 @@ import { defineConfig } from 'oxlint';
  *
  * Rules not available in oxlint are documented in the README.
  */
-export default defineConfig({
+/** @type {import('oxlint').OxlintConfig} */
+const config = defineConfig({
   plugins: ['import', 'node'],
   env: { es2024: true, jest: true },
   globals: {
@@ -146,3 +147,5 @@ export default defineConfig({
     },
   ],
 });
+
+export default config;

@@ -3,7 +3,8 @@ import { defineConfig } from 'oxlint';
 import core from './shared/core.js';
 import typescript from './shared/typescript.js';
 
-export default defineConfig({
+/** @type {import('oxlint').OxlintConfig} */
+const config = defineConfig({
   extends: [core, typescript],
   env: { node: true },
   rules: {
@@ -11,3 +12,5 @@ export default defineConfig({
     // no-buffer-constructor is not supported by oxlint — see README
   },
 });
+
+export default config;

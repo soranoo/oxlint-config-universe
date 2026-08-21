@@ -1,6 +1,4 @@
-declare const defaultConfig: import('oxlint').OxlintConfig;
-declare const native: import('oxlint').OxlintConfig;
-declare const node: import('oxlint').OxlintConfig;
-declare const web: import('oxlint').OxlintConfig;
-
-export { defaultConfig as default, native, node, web };
+export { default } from './default.js';
+export { default as native } from './native.js';
+export { default as node } from './node.js';
+export { default as web } from './web.js';

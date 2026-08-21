@@ -8,7 +8,8 @@ import { defineConfig } from 'oxlint';
  *
  * Extends the base typescript config.
  */
-export default defineConfig({
+/** @type {import('oxlint').OxlintConfig} */
+const config = defineConfig({
   plugins: ['typescript'],
   options: {
     typeAware: true,
@@ -39,3 +40,5 @@ export default defineConfig({
     'typescript/return-await': ['error', 'always'],
   },
 });
+
+export default config;

@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "allowJs": true,
+    "checkJs": false,
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "target": "esnext",
+    "skipLibCheck": true,
+    "types": [],
+    "outDir": "."
+  },
+  "files": [
+    "index.js",
+    "default.js",
+    "native.js",
+    "node.js",
+    "web.js",
+    "shared/typescript-analysis.js"
+  ]
+}

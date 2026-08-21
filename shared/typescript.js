@@ -3,7 +3,8 @@ import { defineConfig } from 'oxlint';
 /**
  * TypeScript-specific rules.
  */
-export default defineConfig({
+/** @type {import('oxlint').OxlintConfig} */
+const config = defineConfig({
   plugins: ['typescript'],
   rules: {
     'typescript/array-type': ['warn', { default: 'array' }],
@@ -26,3 +27,5 @@ export default defineConfig({
     'no-undef': 'off',
   },
 });
+
+export default config;

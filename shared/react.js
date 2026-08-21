@@ -6,7 +6,8 @@ import { defineConfig } from 'oxlint';
  * Only includes non-formatting rules that oxlint supports.
  * JSX formatting rules (indentation, spacing, etc.) are omitted — use oxfmt.
  */
-export default defineConfig({
+/** @type {import('oxlint').OxlintConfig} */
+const config = defineConfig({
   plugins: ['react'],
   rules: {
     'react/jsx-boolean-value': ['warn', 'never'],
@@ -28,3 +29,5 @@ export default defineConfig({
     'react/exhaustive-deps': 'off',
   },
 });
+
+export default config;
