@@ -134,4 +134,15 @@ export default defineConfig({
     'node/handle-callback-err': ['warn', '^(e|err|error|.+Error)$'],
     'node/no-new-require': 'warn',
   },
+  overrides: [
+    {
+      files: ['**/*.ts', '**/*.tsx', '**/*.mts', '**/*.cts'],
+      rules: {
+        // oxlint 1.79's core rule flags legal TypeScript value/type declaration
+        // merging (oxc-project/oxc#25936).
+        // TypeScript still reports conflicting declarations.
+        'no-redeclare': 'off',
+      },
+    },
+  ],
 });

@@ -19,7 +19,7 @@ exports[`lints with the typescript-analysis config: ../fixtures/typescript-analy
       "severity": "warning",
     },
     {
-      "code": "typescript-eslint(prefer-optional-chain)",
+      "code": "typescript(prefer-optional-chain)",
       "help": undefined,
       "labels": [
         {
@@ -33,7 +33,7 @@ exports[`lints with the typescript-analysis config: ../fixtures/typescript-analy
       "severity": "warning",
     },
     {
-      "code": "typescript-eslint(prefer-optional-chain)",
+      "code": "typescript(prefer-optional-chain)",
       "help": undefined,
       "labels": [
         {
@@ -56,7 +56,7 @@ exports[`lints with the typescript-analysis config: ../fixtures/typescript-analy
   "errorCount": 1,
   "messages": [
     {
-      "code": "typescript-eslint(no-for-in-array)",
+      "code": "typescript(no-for-in-array)",
       "help": "Use a more robust iteration method such as for-of or array.forEach instead.",
       "labels": [
         {
@@ -79,7 +79,7 @@ exports[`lints with the typescript-analysis config: ../fixtures/typescript-analy
   "errorCount": 0,
   "messages": [
     {
-      "code": "typescript-eslint(prefer-nullish-coalescing)",
+      "code": "typescript(prefer-nullish-coalescing)",
       "help": undefined,
       "labels": [
         {
@@ -102,7 +102,7 @@ exports[`lints with the typescript-analysis config: ../fixtures/typescript-analy
   "errorCount": 0,
   "messages": [
     {
-      "code": "typescript-eslint(only-throw-error)",
+      "code": "typescript(only-throw-error)",
       "help": undefined,
       "labels": [
         {
@@ -125,7 +125,7 @@ exports[`lints with the typescript-analysis config: ../fixtures/typescript-analy
   "errorCount": 2,
   "messages": [
     {
-      "code": "typescript-eslint(return-await)",
+      "code": "typescript(return-await)",
       "help": undefined,
       "labels": [
         {
@@ -139,7 +139,7 @@ exports[`lints with the typescript-analysis config: ../fixtures/typescript-analy
       "severity": "error",
     },
     {
-      "code": "typescript-eslint(await-thenable)",
+      "code": "typescript(await-thenable)",
       "help": "Remove \`await\` if the value is synchronous, or change the expression to return a Promise or Thenable before awaiting it.",
       "labels": [
         {
@@ -159,7 +159,7 @@ exports[`lints with the typescript-analysis config: ../fixtures/typescript-analy
       "severity": "warning",
     },
     {
-      "code": "typescript-eslint(no-confusing-void-expression)",
+      "code": "typescript(no-confusing-void-expression)",
       "help": "Move it to its own statement instead.",
       "labels": [
         {
@@ -173,7 +173,7 @@ exports[`lints with the typescript-analysis config: ../fixtures/typescript-analy
       "severity": "warning",
     },
     {
-      "code": "typescript-eslint(no-misused-promises)",
+      "code": "typescript(no-misused-promises)",
       "help": undefined,
       "labels": [
         {
@@ -187,9 +187,15 @@ exports[`lints with the typescript-analysis config: ../fixtures/typescript-analy
       "severity": "error",
     },
     {
-      "code": "typescript-eslint(no-floating-promises)",
+      "code": "typescript(no-floating-promises)",
       "help": "The promise must end with a call to .catch, or end with a call to .then with a rejection handler, or be explicitly marked as ignored with the \`void\` operator.",
       "labels": [
+        {
+          "span": {
+            "column": 5,
+            "line": 21,
+          },
+        },
         {
           "span": {
             "column": 5,

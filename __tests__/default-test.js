@@ -10,6 +10,11 @@ it(`has a valid default config`, async () => {
   expect(results).toBeDefined();
 }, 20000);
 
+it(`allows TypeScript value and type declaration merging`, async () => {
+  const results = await lintAsync(configFile, ['fixtures/typescript-declaration-merging.ts']);
+  expect(results).toEqual([]);
+}, 20000);
+
 it(`lints with the default config`, async () => {
   const files = globSync(path.resolve(__dirname, 'fixtures/*all*'));
   const results = await lintAsync(configFile, files);

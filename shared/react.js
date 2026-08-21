@@ -15,6 +15,7 @@ export default defineConfig({
     'react/jsx-no-duplicate-props': 'error',
     'react/jsx-no-undef': 'error',
     'react/no-did-mount-set-state': 'warn',
+    'react/no-did-update-set-state': 'warn',
     'react/no-direct-mutation-state': 'warn',
     'react/no-redundant-should-component-update': 'warn',
     'react/no-this-in-sfc': 'warn',

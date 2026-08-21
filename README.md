@@ -98,7 +98,6 @@ Recommended oxfmt config to match eslint-config-universe import/order configurat
 | `react/jsx-uses-react`              | Obsolete with React 17+ JSX transform |
 | `react/jsx-uses-vars`               | Handled inherently by oxlint          |
 | `react/no-access-state-in-setstate` | Not implemented                       |
-| `react/no-did-update-set-state`     | Not implemented                       |
 
 ### Node rules
 

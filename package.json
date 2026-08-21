@@ -1,6 +1,6 @@
 {
   "name": "oxlint-config-universe",
-  "version": "0.0.3",
+  "version": "0.1.0",
   "description": "Shared oxlint configs for internal Expo projects.",
   "keywords": [
     "expo",
@@ -71,12 +71,12 @@
     "@expo/spawn-async": "^1.7.2",
     "glob": "^13.0.6",
     "jest": "^29.7.0",
-    "oxfmt": "^0.44.0",
-    "oxlint": "^1.59.0",
-    "oxlint-tsgolint": "^0.20.0"
+    "oxfmt": "^0.64.0",
+    "oxlint": "^1.79.0",
+    "oxlint-tsgolint": "^7.0.2001"
   },
   "peerDependencies": {
-    "oxlint": ">=1.59.0"
+    "oxlint": ">=1.79.0"
   },
   "jest": {
     "testMatch": [

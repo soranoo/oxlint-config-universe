@@ -192,7 +192,7 @@ exports[`lints with the Node config: ../fixtures/all-03.ts 1`] = `
       "severity": "warning",
     },
     {
-      "code": "typescript-eslint(consistent-type-assertions)",
+      "code": "typescript(consistent-type-assertions)",
       "help": "Replace \`<string>x\` with \`x as string\`.",
       "labels": [
         {
@@ -215,7 +215,7 @@ exports[`lints with the Node config: ../fixtures/all-04.ts 1`] = `
   "errorCount": 0,
   "messages": [
     {
-      "code": "typescript-eslint(array-type)",
+      "code": "typescript(array-type)",
       "help": "Replace \`Array<string>\` with \`string[]\`.",
       "labels": [
         {
@@ -238,7 +238,7 @@ exports[`lints with the Node config: ../fixtures/all-05.ts 1`] = `
   "errorCount": 0,
   "messages": [
     {
-      "code": "typescript-eslint(no-extra-non-null-assertion)",
+      "code": "typescript(no-extra-non-null-assertion)",
       "help": "Remove the redundant non-null assertion operator (\`!\`).",
       "labels": [
         {
@@ -261,21 +261,7 @@ exports[`lints with the Node config: ../fixtures/all-06.ts 1`] = `
   "errorCount": 0,
   "messages": [
     {
-      "code": "typescript-eslint(no-empty-object-type)",
-      "help": "To avoid confusion around the {} type allowing any non-nullish value, this rule bans usage of the {} type.",
-      "labels": [
-        {
-          "span": {
-            "column": 35,
-            "line": 6,
-          },
-        },
-      ],
-      "message": "Do not use the empty object type literal.",
-      "severity": "warning",
-    },
-    {
-      "code": "typescript-eslint(no-wrapper-object-types)",
+      "code": "typescript(no-wrapper-object-types)",
       "help": "Replace \`Number\` with \`number\`.",
       "labels": [
         {
@@ -289,7 +275,7 @@ exports[`lints with the Node config: ../fixtures/all-06.ts 1`] = `
       "severity": "warning",
     },
     {
-      "code": "typescript-eslint(no-wrapper-object-types)",
+      "code": "typescript(no-wrapper-object-types)",
       "help": "Replace \`Boolean\` with \`boolean\`.",
       "labels": [
         {
@@ -303,7 +289,7 @@ exports[`lints with the Node config: ../fixtures/all-06.ts 1`] = `
       "severity": "warning",
     },
     {
-      "code": "typescript-eslint(no-wrapper-object-types)",
+      "code": "typescript(no-wrapper-object-types)",
       "help": "Replace \`Symbol\` with \`symbol\`.",
       "labels": [
         {
@@ -317,7 +303,7 @@ exports[`lints with the Node config: ../fixtures/all-06.ts 1`] = `
       "severity": "warning",
     },
     {
-      "code": "typescript-eslint(no-wrapper-object-types)",
+      "code": "typescript(no-wrapper-object-types)",
       "help": "Replace \`Object\` with \`object\`.",
       "labels": [
         {
@@ -331,7 +317,7 @@ exports[`lints with the Node config: ../fixtures/all-06.ts 1`] = `
       "severity": "warning",
     },
     {
-      "code": "typescript-eslint(no-wrapper-object-types)",
+      "code": "typescript(no-wrapper-object-types)",
       "help": "Replace \`String\` with \`string\`.",
       "labels": [
         {
@@ -344,6 +330,20 @@ exports[`lints with the Node config: ../fixtures/all-06.ts 1`] = `
       "message": "Do not use wrapper object types.",
       "severity": "warning",
     },
+    {
+      "code": "typescript(no-empty-object-type)",
+      "help": "To avoid confusion around the {} type allowing any non-nullish value, this rule bans usage of the {} type.",
+      "labels": [
+        {
+          "span": {
+            "column": 35,
+            "line": 6,
+          },
+        },
+      ],
+      "message": "Do not use the empty object type literal.",
+      "severity": "warning",
+    },
   ],
   "warningCount": 6,
 }
@@ -354,7 +354,7 @@ exports[`lints with the Node config: ../fixtures/all-07.js 1`] = `
   "errorCount": 0,
   "messages": [
     {
-      "code": "eslint-plugin-import(first)",
+      "code": "import(first)",
       "help": "Move import statement to the top of the file",
       "labels": [
         {
@@ -368,7 +368,7 @@ exports[`lints with the Node config: ../fixtures/all-07.js 1`] = `
       "severity": "warning",
     },
     {
-      "code": "eslint-plugin-import(first)",
+      "code": "import(first)",
       "help": "Move import statement to the top of the file",
       "labels": [
         {
@@ -382,7 +382,7 @@ exports[`lints with the Node config: ../fixtures/all-07.js 1`] = `
       "severity": "warning",
     },
     {
-      "code": "eslint-plugin-import(first)",
+      "code": "import(first)",
       "help": "Move import statement to the top of the file",
       "labels": [
         {

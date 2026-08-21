@@ -8,6 +8,10 @@ export default class Example extends React.Component {
     this.setState({});
   }
 
+  componentDidUpdate() {
+    this.setState({});
+  }
+
   render() {
     return <div>{this.props.x}</div>;
   }
