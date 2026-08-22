@@ -17,6 +17,11 @@ on:
         required: false
         type: boolean
         default: false
+      force_publish:
+        description: 'Recovery: skip the version bump and publish the current package.json version (creates the tag and release only if missing)'
+        required: false
+        type: boolean
+        default: false
 
 concurrency:
   group: publish
@@ -34,6 +39,10 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v7
+        with:
+          # GITHUB_TOKEN cannot push the version commit to main
+          # (protected, PRs required); the bot account can bypass.
+          token: ${{ secrets.EXPO_BOT_PAT }}
 
       - name: Setup Yarn
         run: corepack enable
@@ -65,11 +74,25 @@ jobs:
       # On a dry run the version is bumped only in the working tree,
       # so there is no commit or tag to accidentally push.
       - name: Bump version and tag
+        if: ${{ !inputs.force_publish }}
         run: npm version ${{ inputs.version }} ${{ inputs.dry_run && '--no-git-tag-version' || '' }}
 
       - name: Push version commit and tag
-        if: ${{ !inputs.dry_run }}
+        if: ${{ !inputs.dry_run && !inputs.force_publish }}
         run: git push --follow-tags
+
+      # Recovery for a partially failed release: the version on main is
+      # already bumped, but the tag, npm publish, or release is missing.
+      - name: Tag current version if missing (force publish)
+        if: ${{ inputs.force_publish && !inputs.dry_run }}
+        run: |
+          tag="v$(node -p "require('./package.json').version")"
+          if git ls-remote --exit-code --tags origin "refs/tags/$tag" > /dev/null; then
+            echo "Tag $tag already exists on origin"
+          else
+            git tag "$tag"
+            git push origin "$tag"
+          fi
 
       # Authenticates via OIDC trusted publishing — no token secret needed.
       # Provenance is generated automatically.
@@ -78,6 +101,12 @@ jobs:
 
       - name: Create GitHub Release
         if: ${{ !inputs.dry_run }}
-        run: gh release create "v$(node -p "require('./package.json').version")" --generate-notes
+        run: |
+          tag="v$(node -p "require('./package.json').version")"
+          if gh release view "$tag" > /dev/null 2>&1; then
+            echo "Release $tag already exists"
+          else
+            gh release create "$tag" --generate-notes
+          fi
         env:
           GH_TOKEN: ${{ github.token }}
