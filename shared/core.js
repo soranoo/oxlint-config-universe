@@ -40,6 +40,7 @@ const config = defineConfig({
     'no-control-regex': 'warn',
     'no-debugger': 'warn',
     'no-delete-var': 'error',
+    'no-dupe-args': 'error',
     'no-dupe-class-members': 'error',
     'no-dupe-keys': 'error',
     'no-duplicate-case': 'error',

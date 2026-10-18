@@ -65,7 +65,6 @@ The following rules from `eslint-config-universe` do not have `oxlint-config-uni
 
 | Rule              | Notes                                                                                   |
 | ----------------- | --------------------------------------------------------------------------------------- |
-| `no-dupe-args`    | Not implemented in oxlint                                                               |
 | `no-implied-eval` | Only available with type-aware, present in `oxlint-config-universe/typescript-analysis` |
 | `no-octal`        | Not implemented                                                                         |
 | `no-octal-escape` | Not implemented                                                                         |
