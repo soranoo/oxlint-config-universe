@@ -51,7 +51,7 @@ export default defineConfig({
 });
 ```
 
-This enables `typeAware: true` and adds rules like `await-thenable`, `no-floating-promises`, `no-misused-promises`, `prefer-nullish-coalescing`, etc. This requires [type-aware linting](https://oxc.rs/docs/guide/usage/type-aware-linting.html).
+This enables `typeAware: true` and adds rules like `await-thenable`, `no-floating-promises`, `no-misused-promises`, `prefer-nullish-coalescing`, etc. This requires [type-aware linting](https://oxc.rs/docs/guide/usage/linter/type-aware.html).
 
 ## Formatting
 
